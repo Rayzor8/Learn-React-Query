@@ -12,10 +12,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.visible_hidden {
-  visibility:hidden;
+
+
+button {
+  display: block;
+  width: max-content;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: lightgreen;
+  border-radius: 4px;
+  transition: all 300ms ease-in-out;
 }
 
-.visible_visible {
-  visibility: visible;
+button:is(:hover,:active){
+  background-color: darkseagreen;
+  border: 2px solid darkseagreen;
 }

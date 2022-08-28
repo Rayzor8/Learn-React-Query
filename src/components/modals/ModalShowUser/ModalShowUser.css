@@ -23,12 +23,6 @@
   gap: 10px;
 }
 
-button {
-  display: block;
-  width: max-content;
-  padding: 5px 10px;
-}
-
 .visible_hidden {
   visibility: hidden;
   opacity: 0;

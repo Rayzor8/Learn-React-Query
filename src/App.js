@@ -1,21 +1,19 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { useQuery, useQueryClient } from "react-query";
-import { showCatFact } from "./components/api/catApi";
-import { useState,useEffect } from "react";
+import { useQuery } from "react-query";
+import { showCatFact } from "./api/catApi";
 import { ModalShowUser } from "./components/modals";
+import useToggle from "./hooks/UseToggle";
 
 function App() {
-  const [showModalData, setShowModalData] = useState(false);
-  
+  const [showModalData,handleToggle,closeModal] = useToggle(false)
+
   const { data, isLoading, isError, refetch } = useQuery(
     ["fetchCat"],
     showCatFact,{
       refetchOnMount:false
     }
   );
-
-
 
   let render;
   if (isLoading) render = <h1>Loading</h1>;
@@ -31,11 +29,11 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={() => setShowModalData((prev) => !prev)}>
+      <button onClick={handleToggle}>
         Show data
       </button>
       <ModalShowUser
-        setShowModalData={setShowModalData}
+        closeModal={closeModal}
         show={showModalData ? "visible_visible" : "visible_hidden"}
       />
       {render}
